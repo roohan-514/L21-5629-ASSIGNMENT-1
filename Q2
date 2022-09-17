@@ -1,0 +1,15 @@
+import pandas as pd
+df=pd.read_csv("StudentMarkSheet.csv")
+print(df)
+df.info()
+
+print("NUMBER OF ROWS IN DATA-FRAME -> ",len(df))
+df = df.dropna(how='all')
+y = len(df)
+print(" AFTER DROPPING THE ROWS CONTAINING NULL DATA -> ",len(df))
+df = df.dropna(how='any')
+z = len(df)
+print(" AFTER DROPPING THE ROWS CONTAINING NULL DATA -> ",len(df))
+print(" THE NUMBER OF ROWS THAT CONTAIN ANY NULL DATA -> ",y-z)
+
+print(df[df['Student name']=='James Walker'])
