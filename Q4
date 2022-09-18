@@ -1,0 +1,34 @@
+import pandas as pd
+import numpy as np
+import matplotlib.pyplot as plt
+from sklearn import linear_model
+
+num = int(len(df)*0.8)
+train = df[:num]
+test = df[num:]
+df = pd.read_csv("CatData.csv")
+df.head()
+n = df[df.isnull().any(axis = 1)]
+df = df.dropna()
+print(df)
+
+num = int(len(df)*0.8)
+train = df[:num]
+test = df[num:]
+
+reg = linear_model.LinearRegression()
+train_x = np.array(train[["Tail Length (cm)"]])
+train_y = np.array(train[["Mass (kg)"]])
+reg.fit(train_x,train_y)
+
+coeff = reg.coef_
+inter = reg.intercept_
+print("Slope: ", coeff)
+print("Intercept: ",inter)
+
+plt.xlabel("Tail Length (cm)")
+plt.ylabel("Mass (kg)")
+plt.title("Tail Length vs Mass")
+plt.scatter(train["Tail length (cm)"],train["Mass (kg)"])
+plt.plot(train_x,train_x*coeff[0]+inter, color = 'Red')
+plt.show()
