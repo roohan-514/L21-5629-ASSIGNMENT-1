@@ -1,0 +1,46 @@
+import pandas as pd
+import matplotlib.pyplot as plt
+df=pd.read_csv("StudentMarkSheet.csv")
+df = df.dropna(how='any')
+
+avgbio = df[df["Exam name"] == "Biology"]
+print(avgbio)
+avgbio = avgbio["Marks"]
+avgbio = ( avgbio.sum())/(len(avgbio))
+print ( " THE AVERAGE OF BIOLOGY MARKS IS -> ",avgbio)
+
+avgchem = df[df["Exam name"] == "Chemistry"]
+print(avgchem)
+avgchem = avgchem["Marks"]
+avgchem = ( avgchem.sum())/(len(avgchem))
+print ( " THE AVERAGE OF CHEMISTRY MARKS IS -> ",avgchem)
+
+avgphy = df[df["Exam name"] == "Physics"]
+print(avgphy)
+avgphy = avgphy["Marks"]
+avgphy = ( avgphy.sum())/(len(avgphy))
+print ( " THE AVERAGE OF PHYSICS MARKS IS -> ",avgphy)
+
+avgsoc = df[df["Exam name"] == "Sociology"]
+print(avgsoc)
+avgsoc = avgsoc["Marks"]
+avgsoc = ( avgsoc.sum())/(len(avgsoc))
+print ( " THE AVERAGE OF SOCIOLOGY MARKS IS -> ",avgsoc)
+
+avgmath = df[df["Exam name"] == "Mathematics"]
+print(avgmath)
+avgmath = avgmath["Marks"]
+avgmath = ( avgmath.sum())/(len(avgmath))
+print ( " THE AVERAGE OF MATHEMATICS MARKS IS -> ",avgmath)
+
+avgphil = df[df["Exam name"] == "Philosophy"]
+print(avgphil)
+avgphil = avgphil["Marks"]
+avgphil = ( avgphil.sum())/(len(avgphil))
+print ( " THE AVERAGE OF PHYLOSOPHY MARKS IS -> ",avgphil)
+
+
+subject = [ "BIOLOGY" , "CHEMISTRY" , "PHYSICS" , "SOCIOLOGY" , "MATHS" , "PHILOSOPHY" ]
+average = [ avgbio , avgchem , avgphy , avgsoc , avgmath , avgphil ]
+plt.bar ( subject , average , fc = "blue" )
+plt.show()
